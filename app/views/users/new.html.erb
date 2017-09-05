@@ -1,0 +1,25 @@
+<%= link_to '戻る', '/' %>
+<h2>プレイヤー設定</h2>
+<div class="red">
+  <p>～人数～</p>
+</div>
+
+<% for i in 0..2 %>
+  <div class="">
+    <input name="name" value="player<%= i+1 %>">
+  </div>
+<% end %>
+
+<div class="">
+  <input type="submit" value="ゲーム設定へ">
+</div>
+
+
+<script type="text/javascript">
+
+$(function() {
+  $('.red').css('color', 'red');
+});
+
+
+</script>
