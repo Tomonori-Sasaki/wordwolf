@@ -1,8 +1,6 @@
 <%= link_to '戻る', '/' %>
 <h2>プレイヤー設定</h2>
-<div class="red">
-  <p>～人数～</p>
-</div>
+<p>～人数～</p>
 
 <% for i in 0..2 %>
   <div class="">
@@ -10,16 +8,14 @@
   </div>
 <% end %>
 
+<div class="square_btn" id="add">
+  add
+</div>
+
 <div class="">
   <input type="submit" value="ゲーム設定へ">
 </div>
 
-
 <script type="text/javascript">
-
-$(function() {
-  $('.red').css('color', 'red');
-});
-
 
 </script>
