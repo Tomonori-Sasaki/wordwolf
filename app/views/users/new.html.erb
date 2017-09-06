@@ -1,19 +1,14 @@
 <%= link_to '戻る', '/' %>
-<h2>プレイヤー設定</h2>
-<p>～人数～</p>
 
-<% for i in 0..2 %>
-  <div class="">
-    <input name="name" value="player<%= i+1 %>">
-  </div>
-<% end %>
+<div class="container">
+  <h2>プレイヤー人数は何名ですか？</h2>
+  <p>~3名以上~</p>
 
-<div class="square_btn" id="add">
-  add
-</div>
-
-<div class="">
-  <input type="submit" value="ゲーム設定へ">
+  <%= form_tag("/users/create", method: "post") do %>
+    <%= label_tag(:num, "人数:") %>
+    <%= text_field_tag(:num) %>
+    <%= submit_tag("プレイヤー名設定へ") %>
+  <% end %>
 </div>
 
 <script type="text/javascript">

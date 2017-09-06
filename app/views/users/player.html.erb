@@ -1,0 +1,13 @@
+<%= link_to '戻る', '/users/new' %>
+<div class="container">
+  <h2>プレイヤー名を設定してください</h2>
+  <p>文系：時計回り，理系：半時計回り</p>
+
+  <% for i in 0..(@num.to_i-1) %>
+    <div class="">
+      <input name="name" value="player<%= i+1 %>">
+    </div>
+  <% end %>
+  <input type="submit" value="ゲーム設定へ">
+
+</div>
