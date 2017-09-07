@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   def new
+    @user = User.new
   end
 
   def create
@@ -14,5 +15,6 @@ class UsersController < ApplicationController
   def player
     @num = params[:num]
   end
+
 
 end
