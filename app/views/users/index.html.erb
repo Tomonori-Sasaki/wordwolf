@@ -1,6 +1,19 @@
 <div class="main">
   <div class="container">
-    <%= link_to 'プレイヤー追加', new_user_path, class:"square_btn" %>
-    <%= link_to 'OK', users_setting_path, class:"square_btn" %>
+    <h2>3名以上のデュエリストを選抜してください</h2>
+    <div class="btn">
+      <%= link_to 'デュエリスト追加', new_user_path, class:"square_btn" %>
+      <%= link_to '次へ', users_setting_path, class:"square_btn" %>
+    </div>
+    <div class="pokemon">
+      <h2>～選ばれしデュエリストたち～</h2>
+      <% @users.each do |user| %>
+        <%= link_to image_tag("#{user.image}"), "#" %>
+      <% end %>
+    </div>
+    <div class="btn">
+      <%= link_to '削除', "#", class:"square_btn_red" %>
+      <%= link_to '全て削除', "#", class:"square_btn_red" %>
+    </div>
   </div>
 </div>
