@@ -1,0 +1,23 @@
+<div class="main">
+  <div class="container">
+    <div class="pokemon">
+        <div class="character-icon">
+          <%= link_to image_tag("#{@user.image}"), "#" %>
+          <p><%= @user.name %></p>
+        </div>
+    </div>
+    <div class="subject">
+      <h2>処刑する人に投票してください</h2>
+    </div>
+    <div class="pokemon">
+      <% @users.each do |user| %>
+        <% unless user == @user %>
+          <div class="character-icon">
+            <%= link_to image_tag("#{user.image}"), users_vote_create_path(@user.user_id, user_id: user.user_id), :method => :post %>
+            <p><%= user.name %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

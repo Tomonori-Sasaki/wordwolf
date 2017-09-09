@@ -1,0 +1,28 @@
+<div class="main">
+  <div class="container">
+    <h2>結果発表</h2>
+    <h2><%= @message %></h2>
+    <div class="pokemon">
+      <% @users.each do |user|%>
+        <% if user.user_id == $wolf_num + 1 %>
+          <div class="character-icon">
+            <%= link_to image_tag("#{user.image}"), "#" %>
+            <p>人狼：<%= user.name %></p>
+            <p>「<%= user.word %>」</p>
+          </div>
+        <% else %>
+          <div class="character-icon">
+            <%= link_to image_tag("#{user.image}"), "#" %>
+            <p>市民：<%= user.name %></p>
+            <p>「<%= user.word %>」</p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="btn">
+      <%= link_to '次のゲーム', users_path, class:"square_btn" %>
+      <%= link_to '終了', "/", class:"square_btn_red" %>
+    </div>
+  </div>
+</div>

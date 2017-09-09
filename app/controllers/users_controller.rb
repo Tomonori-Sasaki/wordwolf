@@ -2,6 +2,12 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @users.each do |user|
+      if user.voted
+        user.voted = 0
+        user.save
+      end
+    end
   end
 
   def new
@@ -10,7 +16,7 @@ class UsersController < ApplicationController
 
   def create
     player_num = User.all.count + 1
-    @user = User.new(name: "player#{player_num}",image: params[:image])
+    @user = User.new(name: "player#{player_num}",image: params[:image], voted: 0, user_id: player_num)
     @user.save
     flash[:notice] = '新たなデュエリストが登録されました'
     redirect_to(users_path)
@@ -37,7 +43,7 @@ class UsersController < ApplicationController
     unless word1.empty? || word2.empty?
       if word1 != word2
         save_words_at_random(word1,word2)
-        redirect_to(users_not_seen_path)
+        redirect_to(users_not_seen_path(1))
       else
         flash[:notice] = '2つの異なるワードを設定してくれよな'
         redirect_to(users_setting_path)
@@ -49,6 +55,58 @@ class UsersController < ApplicationController
   end
 
   def not_seen
+    @player_num = params[:num].to_i - 1
+    @user = User.all[@player_num]
+    if @user.nil?
+      redirect_to(users_start_path)
+    end
+  end
+
+  def subject
+    @player_num = params[:num].to_i - 1
+    @user = User.all[@player_num]
+  end
+
+  def start
+  end
+
+  def finish
+  end
+
+  def vote
+    @player_num = params[:num].to_i - 1
+    @users = User.all
+    @user = @users[@player_num]
+    if @user.nil?
+      redirect_to(users_kill_path)
+    end
+  end
+
+  def vote_create
+    user = User.find_by(user_id: params[:user_id])
+    user.voted += 1
+    user.save
+    redirect_to(users_vote_path(params[:num].to_i + 1))
+  end
+
+  def kill
+    @voted_max = User.maximum('voted')
+    @killed_users = User.where(voted: @voted_max)
+  end
+
+  def result
+    @users = User.all
+    @voted_max = User.maximum('voted')
+    @killed_users = User.where(voted: @voted_max)
+
+    if @killed_users == @users[$wolf_num]
+      @message = "市民の勝利です"
+    elsif @killed_users.pluck(:user_id).include?($wolf_num + 1)
+      @message = "喧嘩両成敗です"
+    else
+      @message = "人狼の勝利です"
+    end
+
   end
 
   def destroy
@@ -68,7 +126,8 @@ class UsersController < ApplicationController
   end
 
   def set_words_at_random(w3,w4)
-    @users[rand(1..@users.count)-1].word = w3
+    $wolf_num = rand(1..@users.count)-1
+    @users[$wolf_num].word = w3
     @users.each do |user|
       if user.word.nil?
         user.word = w4
