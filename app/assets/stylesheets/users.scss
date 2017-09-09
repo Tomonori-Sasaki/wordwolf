@@ -8,6 +8,18 @@
   text-align: center;
 }
 
+.character img{
+  width: 89px;
+  height: 89px;
+  border-radius: 20%;
+  box-shadow: 0 4px 12px #c1ced7;
+  object-fit: cover;
+}
+
+.character{
+  text-align: center;
+}
+
 .pokemon img{
   width: 100px;
   height: 100px;
@@ -18,4 +30,43 @@
 
 .pokemon{
   text-align: center;
+}
+
+.pokemon p{
+  display: block;
+}
+
+.character-icon{
+  width: 100px;
+  display: inline-block;
+}
+
+//setting==================================
+
+input[type="text"]{
+  outline: none;
+  border: 1px solid #aaa;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+}
+input[type="text"]:focus{
+  box-shadow: 0 0 7px #1abc9c;
+  border: 1px solid #1abc9c;
+}
+
+input[type="submit"] {
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+  background: #668ad8;/*ãƒœã‚¿ãƒ³è‰²*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+}
+
+input[type="submit"]:active {
+  -ms-transform: translateY(4px);
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px);/*下に動く*/
+  border-bottom: none;/*線を消す*/
 }

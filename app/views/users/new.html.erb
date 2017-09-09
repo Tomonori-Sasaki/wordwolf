@@ -1,11 +1,19 @@
 <div class="main">
   <div class="container">
-    <h2>好きなポケモンを選んでください</h2>
-    <div class="pokemon">
-      <%= link_to image_tag("sample1.png"), :action => "create", :image => "sample1.png", :method => :post %>
-      <%= link_to image_tag("sample2.png"), :action => "create" %>
-      <%= link_to image_tag("sample3.png"), :action => "create" %>
-      <%= link_to image_tag("sample4.png"), :action => "create" %>
+    <h2>好きなキャラクターを選択してください</h2>
+    <div class="character">
+      <%= link_to image_tag("sample1.png"), users_path(@user, image: 'sample1.png'), :method => :post %>
+      <%= link_to image_tag("sample2.png"), users_path(@user, image: 'sample2.png'), :method => :post %>
+      <%= link_to image_tag("sample3.png"), users_path(@user, image: 'sample3.png'), :method => :post %>
+      <%= link_to image_tag("sample4.png"), users_path(@user, image: 'sample4.png'), :method => :post %>
+      <%= link_to image_tag("sample5.png"), users_path(@user, image: 'sample5.png'), :method => :post %>
+      <%= link_to image_tag("sample6.png"), users_path(@user, image: 'sample6.png'), :method => :post %>
+      <%= link_to image_tag("sample7.png"), users_path(@user, image: 'sample7.png'), :method => :post %>
+      <%= link_to image_tag("sample8.png"), users_path(@user, image: 'sample8.png'), :method => :post %>
+      <%= link_to image_tag("sample9.png"), users_path(@user, image: 'sample9.png'), :method => :post %>
+      <%= link_to image_tag("sample10.png"), users_path(@user, image: 'sample10.png'), :method => :post %>
+      <%= link_to image_tag("sample11.png"), users_path(@user, image: 'sample11.png'), :method => :post %>
+      <%= link_to image_tag("sample12.png"), users_path(@user, image: 'sample12.png'), :method => :post %>
     </div>
     <div class="btn">
       <%= link_to '戻る', users_path, class:"square_btn" %>
