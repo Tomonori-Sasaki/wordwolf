@@ -1,5 +1,7 @@
 <div class="main">
   <div class="container">
+    <h2>ゲームを開始してください。</h2>
+    <h2>時間は<%= @users.all.count %>分です。</h2>
     <div class="btn">
       <%= link_to 'ゲーム終了！', users_vote_path(1), class:"square_btn_red" %>
     </div>

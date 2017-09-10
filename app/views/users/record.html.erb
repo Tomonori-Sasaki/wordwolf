@@ -1,0 +1,43 @@
+<div class="main">
+  <div class="container">
+    <h2>成績発表</h2>
+    <h2>Total Win > Wolf Win > Citizen Win</h2>
+    <div class="pokemon">
+      <% @users.each_with_index do |user,index|%>
+        <% if index == 0 %>
+          <div class="result-icon gold">
+            <%= link_to image_tag("#{user.image}"), "#" %>
+            <h3><%= index + 1 %>位　<%= user.name %></h3>
+            <p>Citizen Win：<%= user.citizen_win %></p>
+            <p>Wolf Win：<%= user.wolf_win %></p>
+            <p>Total Win：<%= user.total_win %></p>
+          </div>
+        <% elsif index == 1 %>
+          <div class="result-icon silver">
+            <%= link_to image_tag("#{user.image}"), "#" %>
+            <h3><%= index + 1 %>位　<%= user.name %></h3>
+            <p>Citizen Win：<%= user.citizen_win %></p>
+            <p>Wolf Win：<%= user.wolf_win %></p>
+            <p>Total Win：<%= user.total_win %></p>
+          </div>
+        <% elsif index == 2 %>
+          <div class="result-icon copper">
+            <%= link_to image_tag("#{user.image}"), "#" %>
+            <h3><%= index + 1 %>位　<%= user.name %></h3>
+            <p>Citizen Win：<%= user.citizen_win %></p>
+            <p>Wolf Win：<%= user.wolf_win %></p>
+            <p>Total Win：<%= user.total_win %></p>
+          </div>
+        <% else %>
+          <div class="result-icon blue">
+            <%= link_to image_tag("#{user.image}"), "#" %>
+            <h3><%= index + 1 %>位　<%= user.name %></h3>
+            <p>Citizen Win：<%= user.citizen_win %></p>
+            <p>Wolf Win：<%= user.wolf_win %></p>
+            <p>Total Win：<%= user.total_win %></p>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

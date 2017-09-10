@@ -1,13 +1,15 @@
 <div class="main">
   <div class="container">
     <div class="pokemon">
-        <div class="character-icon">
+        <div class="character-icon-for-not-seen">
           <%= image_tag(@user.image) %>
           <p><%= @user.name %></p>
         </div>
     </div>
     <div class="subject">
-      <h2>お題を表示します。他のプレイヤーに見られないように表示してください。</h2>
+      <h2>お題を表示します。</h2>
+      <h2>他のプレイヤーに見られないように</h2>
+      <h2>表示してください。</h2>
     </div>
     <div class="btn">
       <%= link_to '表示', users_subject_path(@player_num + 1), class:"square_btn" %>

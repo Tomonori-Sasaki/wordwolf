@@ -2,7 +2,7 @@
   <div class="container">
     <div class="pokemon">
       <h2>この愚民が処刑されました。</h2>
-      <h2>得票数：<%= @voted_max %>表</h2>
+      <h2>得票数：<%= @voted_max %>票</h2>
       <% @killed_users.each do |user| %>
         <div class="character-icon">
           <%= link_to image_tag("#{user.image}"), "#" %>

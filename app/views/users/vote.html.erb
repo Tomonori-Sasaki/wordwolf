@@ -1,13 +1,14 @@
 <div class="main">
   <div class="container">
     <div class="pokemon">
+      <h2>さあ、処刑の時間です。</h2>
         <div class="character-icon">
           <%= link_to image_tag("#{@user.image}"), "#" %>
           <p><%= @user.name %></p>
         </div>
     </div>
     <div class="subject">
-      <h2>処刑する人に投票してください</h2>
+      <h2>処刑したい人に投票してください</h2>
     </div>
     <div class="pokemon">
       <% @users.each do |user| %>

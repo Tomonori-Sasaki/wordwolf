@@ -1,0 +1,17 @@
+<div class="pokemon">
+  <% @users.each do |user|%>
+    <% if user.user_id == session[:user_id] %>
+      <div class="result-icon silver">
+        <%= link_to image_tag("#{user.image}"), "#" %>
+        <p><%= user.name %></p>
+        <p>大人狼</p>
+      </div>
+    <% else %>
+      <div class="result-icon gold">
+        <%= link_to image_tag("#{user.image}"), "#" %>
+        <p><%= user.name %></p>
+        <p>市民</p>
+      </div>
+    <% end %>
+  <% end %>
+</div>

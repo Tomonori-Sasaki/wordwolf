@@ -2,23 +2,15 @@
   <div class="container">
     <h2>結果発表</h2>
     <h2><%= @message %></h2>
-    <div class="pokemon">
-      <% @users.each do |user|%>
-        <% if user.user_id == $wolf_num + 1 %>
-          <div class="character-icon">
-            <%= link_to image_tag("#{user.image}"), "#" %>
-            <p>人狼：<%= user.name %></p>
-            <p>「<%= user.word %>」</p>
-          </div>
-        <% else %>
-          <div class="character-icon">
-            <%= link_to image_tag("#{user.image}"), "#" %>
-            <p>市民：<%= user.name %></p>
-            <p>「<%= user.word %>」</p>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
+    <% if @message == "「市民の勝利です。」" %>
+      <%= render :partial => "citizen_win" %>
+    <% elsif @message == "「引き分け。喧嘩両成敗です。」" %>
+      <%= render :partial => "all_lose" %>
+    <% elsif @message == "「人狼の勝利です。」" %>
+      <%= render :partial => "wolf_win" %>
+    <% else %>
+      <%= render :partial => "violation" %>
+    <% end %>
 
     <div class="btn">
       <%= link_to '次のゲーム', users_path, class:"square_btn" %>

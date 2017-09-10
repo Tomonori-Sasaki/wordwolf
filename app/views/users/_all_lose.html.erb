@@ -1,0 +1,17 @@
+<div class="pokemon">
+  <% @users.each do |user|%>
+    <% if user.user_id == $wolf_num + 1 %>
+      <div class="result-icon silver">
+        <%= link_to image_tag("#{user.image}"), "#" %>
+        <p>人狼：<%= user.name %></p>
+        <p>「<%= user.word %>」</p>
+      </div>
+    <% else %>
+      <div class="result-icon silver">
+        <%= link_to image_tag("#{user.image}"), "#" %>
+        <p>市民：<%= user.name %></p>
+        <p>「<%= user.word %>」</p>
+      </div>
+    <% end %>
+  <% end %>
+</div>

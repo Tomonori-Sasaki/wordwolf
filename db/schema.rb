@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170909073333) do
+ActiveRecord::Schema.define(version: 20170910082728) do
 
   create_table "users", force: :cascade do |t|
     t.string "word"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 20170909073333) do
     t.string "image"
     t.integer "voted"
     t.integer "user_id"
+    t.integer "citizen_win"
+    t.integer "wolf_win"
+    t.integer "total_win"
   end
 
 end

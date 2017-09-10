@@ -1,19 +1,26 @@
 <div class="main">
   <div class="container">
-    <h2>人数構成</h2>
-    <p>市民：<%= @users.all.count - 1 %>　人狼：<%= 1 %></p>
-    <h2>トーク時間</h2>
-    <h2>好きなワードを2つ設定してください</h2>
-    <%= form_for :user, url: users_setting_create_path do |f| %>
-    <p>
-     <%= f.text_field :word1, placeholder: 'WORD1' %>
-    </p>
-    <p>
-     <%= f.text_field :word2, placeholder: 'WORD2' %>
-    </p>
-    <p>
-     <%= f.submit 'ゲームスタート' %>
-    </p>
-    <% end %>
+    <div class="setting">
+      <h2>人数構成</h2>
+      <p>市民：<%= @users.all.count - 1 %>　人狼：<%= 1 %></p>
+    </div>
+    <div class="setting">
+      <h2>トーク時間</h2>
+      <p><%= @users.all.count %>分</p>
+    </div>
+    <div class="setting">
+      <h2>好きなワードを2つ設定してください</h2>
+      <%= form_for :user, url: users_setting_create_path do |f| %>
+      <p>
+       <%= f.text_field :word1, placeholder: 'WORD1' %>
+      </p>
+      <p>
+       <%= f.text_field :word2, placeholder: 'WORD2' %>
+      </p>
+      <p>
+       <%= f.submit 'ゲームスタート' %>
+      </p>
+      <% end %>
+    </div>
   </div>
 </div>

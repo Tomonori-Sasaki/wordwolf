@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   def create
     player_num = User.all.count + 1
-    @user = User.new(name: "player#{player_num}",image: params[:image], voted: 0, user_id: player_num)
+    @user = User.new(name: "player#{player_num}",image: params[:image], voted: 0, user_id: player_num, citizen_win: 0, wolf_win: 0, total_win: 0)
     @user.save
     flash[:notice] = '新たなデュエリストが登録されました'
     redirect_to(users_path)
@@ -58,8 +58,9 @@ class UsersController < ApplicationController
     @player_num = params[:num].to_i - 1
     @user = User.all[@player_num]
     if @user.nil?
-      redirect_to(users_start_path)
+      return redirect_to(users_start_path)
     end
+    session[:user_id] = @user.user_id
   end
 
   def subject
@@ -68,9 +69,11 @@ class UsersController < ApplicationController
   end
 
   def start
+    @users = User.all
   end
 
   def finish
+    @users = User.all
   end
 
   def vote
@@ -99,14 +102,27 @@ class UsersController < ApplicationController
     @voted_max = User.maximum('voted')
     @killed_users = User.where(voted: @voted_max)
 
-    if @killed_users == @users[$wolf_num]
-      @message = "市民の勝利です"
+    if @killed_users.pluck(:user_id) == [$wolf_num + 1]
+      @message = "「市民の勝利です。」"
+      @users.each do |user|
+        if user != @users[$wolf_num]
+          user.citizen_win += 1
+          user.total_win += 1
+          user.save
+        end
+      end
     elsif @killed_users.pluck(:user_id).include?($wolf_num + 1)
-      @message = "喧嘩両成敗です"
+      @message = "「引き分け。喧嘩両成敗です。」"
     else
-      @message = "人狼の勝利です"
+      @message = "「人狼の勝利です。」"
+      @users[$wolf_num].wolf_win += 1
+      @users[$wolf_num].total_win += 1
+      @users[$wolf_num].save
     end
+  end
 
+  def record
+    @users = User.all.order(wolf_win: :desc).order(total_win: :desc)
   end
 
   def destroy
@@ -146,7 +162,12 @@ class UsersController < ApplicationController
     end
   end
 
-
+  # def ensure_correct_user
+  #   if session[:user_id] != params[:num].to_i
+  #     @message = "Player#{session[:user_id]}の反則負けです"
+  #     redirect_to(users_result_path)
+  #   end
+  # end
 
 
 end
