@@ -1,6 +1,6 @@
 <div class="main">
   <div class="container">
-    <h2>ゲームを開始してください。</h2>
+    <h2>ゲームを開始します。</h2>
     <h2>時間は<%= @users.all.count %>分です。</h2>
 
 
@@ -12,7 +12,8 @@
           <li id="resetBtn"><span class="square_btn">RESET</span></li>
        </ul>
        <div id="control">
-          <p>時間変更<input type="text" id="setSecond"><span class="square_btn" id="changeSecond">SAVE</span></p>
+          <h3>Change Seconds</h3>
+            <p><input type="text" id="setSecond"><span class="square_btn" id="changeSecond">SAVE</span></p>
           <p id="error"></p>
        </div>
     </div>
@@ -76,6 +77,13 @@ $(function(){
    //実行処理-----------------------------------
 
    textDisplay();
+
+   //Loadでタイマースタート
+   $("#startBtn").ready(function(){
+       time = setPause; //setPauseに入っている秒数から開始
+       textDisplay();
+       timerStart();
+   });
 
    //スタートボタンクリックでタイマースタート
    $("#startBtn").click(function(){

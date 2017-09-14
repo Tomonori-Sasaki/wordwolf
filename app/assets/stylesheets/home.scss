@@ -240,6 +240,11 @@ footer a {
     border-bottom: none;/*線を消す*/
 }
 
+.square_btn:hover{
+  cursor: pointer;
+  cursor: hand;
+}
+
 .square_btn_red{
     display: inline-block;
     padding: 0.5em 1em;

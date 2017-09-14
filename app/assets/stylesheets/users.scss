@@ -98,7 +98,7 @@ input[type="submit"]:active {
 //finish==================================
 #countDownWrap {
    margin:50px auto;
-   width:300px;
+   width:50%;
    text-align:center;
 }
 #countDown {
@@ -108,9 +108,22 @@ input[type="submit"]:active {
    text-align:center;
    font-family: 'Oswald', sans-serif;
 }
-#startBtn { margin-bottom:8px; }
-#stopBtn { margin-bottom:15px; float:left; }
-#resetBtn { margin-bottom:15px; float:right; }
+#startBtn {
+  margin-bottom:8px;
+  text-align: center;
+}
+
+#stopBtn {
+  margin-bottom:15px;
+  text-align: center;
+  display: inline-block;
+}
+
+#resetBtn {
+  margin-bottom:15px;
+  text-align: center;
+  display: inline-block;
+}
 
 #control {
    clear:both;
