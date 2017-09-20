@@ -22,6 +22,10 @@ class UsersController < ApplicationController
     redirect_to(users_path)
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def setting
     if User.all.count < 3
       flash[:notice] = '友達が少なすぎてプレイできません。まずはお友達を作りましょう。'
@@ -129,6 +133,19 @@ class UsersController < ApplicationController
     if User.all[0]
       User.last.destroy
       flash[:notice] = '1名のデュエリストを闇に葬むりました'
+    end
+    redirect_to(users_path)
+  end
+
+  def destroy_selected
+    user = User.find(params[:id])
+    user.destroy
+    flash[:notice] = "#{user.name}を闇に葬むりました"
+
+    users = User.all
+    users.each_with_index do |user,index|
+      user.name = "player#{index + 1}"
+      user.save
     end
     redirect_to(users_path)
   end
