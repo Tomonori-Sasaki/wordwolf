@@ -9,7 +9,7 @@
       <h2>～選ばれしデュエリストたち～</h2>
       <% @users.each_with_index do |user,index| %>
         <div class="character-icon">
-          <%= link_to image_tag("#{user.image}"), "#" %>
+          <%= link_to image_tag("#{user.image}"), user_path(user) %>
           <p><%= user.name %></p>
         </div>
       <% end %>

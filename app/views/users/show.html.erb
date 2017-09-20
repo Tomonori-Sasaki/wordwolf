@@ -1,0 +1,17 @@
+<div class="main">
+  <div class="container">
+    <div class="pokemon">
+      <div class="result-icon blue">
+        <%= link_to image_tag("#{@user.image}"), "#" %>
+        <h3><%= @user.name %></h3>
+        <p>Citizen Win：<%= @user.citizen_win %></p>
+        <p>Wolf Win：<%= @user.wolf_win %></p>
+        <p>Total Win：<%= @user.total_win %></p>
+      </div>
+    </div>
+    <div class="btn">
+      <%= link_to '戻る', users_path, class:"square_btn" %>
+      <%= link_to '削除', users_destroy_selected_path(@user), :method => :delete, class:"square_btn_red" %>
+    </div>
+  </div>
+</div>
