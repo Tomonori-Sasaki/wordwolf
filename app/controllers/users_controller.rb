@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
+    @users = User.all.order(created_at: :asc)
     @users.each do |user|
       if user.voted
         user.voted = 0
@@ -101,7 +101,7 @@ class UsersController < ApplicationController
   end
 
   def result
-    @users = User.all
+    @users = User.all.order(created_at: :asc)
     @voted_max = User.maximum('voted')
     @killed_users = User.where(voted: @voted_max)
 
