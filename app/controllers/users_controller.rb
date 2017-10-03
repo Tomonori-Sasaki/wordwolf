@@ -81,9 +81,8 @@ class UsersController < ApplicationController
   end
 
   def vote
-    @player_num = params[:num].to_i - 1
     @users = User.all
-    @user = @users[@player_num]
+    @user = User.find_by(user_id: params[:num].to_i)
     if @user.nil?
       redirect_to(users_kill_path)
     end
