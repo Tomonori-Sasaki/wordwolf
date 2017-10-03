@@ -10,7 +10,11 @@ end
 gem 'rails', '~> 5.1.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development
+<<<<<<< HEAD
 # 本番ではpostgressを使用する
+=======
+
+>>>>>>> 520dff559bb7037349fa54adef28c909815a4b16
 gem 'pg', group: :production
 # Use Puma as the app server
 gem 'puma', '~> 3.7'

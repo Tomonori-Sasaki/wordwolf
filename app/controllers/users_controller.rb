@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @users = User.all
+    @users = User.all.order(created_at: :asc)
     @users.each do |user|
       if user.voted
         user.voted = 0
@@ -60,7 +60,7 @@ class UsersController < ApplicationController
 
   def not_seen
     @player_num = params[:num].to_i - 1
-    @user = User.all[@player_num]
+    @user = User.all.order(created_at: :asc)[@player_num]
     if @user.nil?
       return redirect_to(users_start_path)
     end
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
 
   def subject
     @player_num = params[:num].to_i - 1
-    @user = User.all[@player_num]
+    @user = User.all.order(created_at: :asc)[@player_num]
   end
 
   def start
@@ -81,9 +81,8 @@ class UsersController < ApplicationController
   end
 
   def vote
-    @player_num = params[:num].to_i - 1
-    @users = User.all
-    @user = @users[@player_num]
+    @users = User.all.order(created_at: :asc)
+    @user = User.find_by(user_id: params[:num].to_i)
     if @user.nil?
       redirect_to(users_kill_path)
     end
@@ -102,7 +101,7 @@ class UsersController < ApplicationController
   end
 
   def result
-    @users = User.all
+    @users = User.all.order(created_at: :asc)
     @voted_max = User.maximum('voted')
     @killed_users = User.where(voted: @voted_max)
 
