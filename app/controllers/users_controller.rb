@@ -60,7 +60,7 @@ class UsersController < ApplicationController
 
   def not_seen
     @player_num = params[:num].to_i - 1
-    @user = User.all[@player_num]
+    @user = User.all.order(created_at: :asc)[@player_num]
     if @user.nil?
       return redirect_to(users_start_path)
     end
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
 
   def subject
     @player_num = params[:num].to_i - 1
-    @user = User.all[@player_num]
+    @user = User.all.order(created_at: :asc)[@player_num]
   end
 
   def start
