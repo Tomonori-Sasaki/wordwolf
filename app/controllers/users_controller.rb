@@ -125,7 +125,7 @@ class UsersController < ApplicationController
   end
 
   def record
-    @users = User.all.order(wolf_win: :desc).order(total_win: :desc)
+    @users = User.all.order(created_at: :asc).order(wolf_win: :desc).order(total_win: :desc)
   end
 
   def destroy
