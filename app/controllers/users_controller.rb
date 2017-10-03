@@ -81,7 +81,7 @@ class UsersController < ApplicationController
   end
 
   def vote
-    @users = User.all
+    @users = User.all.order(created_at: :asc)
     @user = User.find_by(user_id: params[:num].to_i)
     if @user.nil?
       redirect_to(users_kill_path)
