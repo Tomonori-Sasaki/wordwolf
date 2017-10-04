@@ -92,10 +92,6 @@ GEM
       mini_portile2 (~> 2.2.0)
     nokogiri (1.8.0-x64-mingw32)
       mini_portile2 (~> 2.2.0)
-<<<<<<< HEAD
-=======
-    pg (0.21.0)
->>>>>>> 520dff559bb7037349fa54adef28c909815a4b16
     pg (0.21.0-x64-mingw32)
     pry (0.10.4)
       coderay (~> 1.1.0)
