@@ -284,6 +284,44 @@ footer a {
     border-bottom: none;/*線を消す*/
 }
 
+.share-icon{
+  margin-top: 50px;
+  text-align: center;
+}
+
+.share_btn2{
+  display: inline-block;
+  text-decoration: none;
+  width: 50px;
+  margin:2px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 23px;
+  color:white;
+  border-radius: 12px;
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  font-weight: bold;
+  transition: .3s;
+}
+
+.share_btn2 .fa {
+  line-height:50px
+}
+.share_btn2:hover{
+  -webkit-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+
+.share_btn2.shtw {background: #22b8ff;}
+.share_btn2.shfb {background: #6680d8;}
+.share_btn2.shhtb {background: #49a8fb;}
+.share_btn2.shpkt {background: #ff6d82;}
+.share_btn2.shfdly {background: #7bda72;}
+.share_btn2.shgp {background: #fd6969;}
+
 // home#rule
 .google img{
   width: 50%;
